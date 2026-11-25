@@ -1,0 +1,17 @@
+@font-face{font-family:MotifGallery;src:url('../assets/fonts/play.woff2') format('woff2');font-display:swap}
+:root{color-scheme:light;background:#efeee9;color:#352d3b;font:15px/1.55 "Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 96% 0,#e3d9e8,transparent 47%),#efeee9;min-height:100dvh}
+.gallery-header,main{max-width:1260px;margin:auto;padding-inline:clamp(16px,4vw,44px)}
+.gallery-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-block:14px;border-bottom:1px solid #dbd2de}
+.gallery-label{font:25px MotifGallery,Georgia,serif;color:#4c3b57}
+.gallery-header nav{display:flex;flex-wrap:wrap;gap:6px}
+.gallery-header nav a{padding:5px 10px;border:1px solid #cfc0d4;border-radius:7px;background:#f9f6f7;color:#493855;text-decoration:none;font-size:12px}
+.gallery-header nav a:hover{background:#eae0ed}
+main{padding-block:clamp(22px,4vw,48px)}
+h1{margin:0 0 4px;font:400 clamp(29px,5vw,53px)/1.13 MotifGallery,Georgia,"Songti SC",serif;overflow-wrap:anywhere}
+main>p{margin:0 0 20px;color:#62546a}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,305px),1fr));gap:14px}
+figure{margin:0;min-width:0;border:1px solid #dcd3e0;border-radius:10px;background:#faf7f8;overflow:hidden}
+figure a{display:block}figure img{display:block;width:100%;aspect-ratio:1.5;object-fit:cover;object-position:top;background:#ebe3ee}
+figcaption{padding:8px 11px;font-size:13px;color:#4c3b57}
+a:focus-visible{outline:2px solid #6b5183;outline-offset:-2px}

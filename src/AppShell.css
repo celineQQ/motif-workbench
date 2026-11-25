@@ -1,0 +1,86 @@
+/* Header utilities occupy one icon. The menu is visible only while open. */
+.room-header-actions { display:flex; align-items:center; gap:7px; pointer-events:auto; }
+.display-menu { position:relative; flex:0 0 auto; font:13px var(--interface-font,system-ui,sans-serif); z-index:30; }
+.display-menu summary { display:grid; place-items:center; width:34px; height:34px; list-style:none; border:1px solid #d9cfe0; border-radius:8px; background:#f7f3f7; color:#4f405c; cursor:pointer; }
+.display-menu summary::-webkit-details-marker { display:none; }
+.display-menu summary:hover, .display-menu[open] summary { background:#e8deed; }
+.display-menu-content { position:absolute; right:0; top:calc(100% + 6px); display:grid; gap:2px; width:max-content; min-width:155px; padding:5px; background:#fdfaff; color:#362b40; border:1px solid #ddd1e3; border-radius:9px; box-shadow:0 7px 24px #34223b26; }
+.display-menu-content :is(a,button) { display:flex; gap:8px; align-items:center; width:100%; padding:7px 8px; border:0; border-radius:5px; color:inherit; background:transparent; text-align:left; text-decoration:none; font:inherit; cursor:pointer; }
+.display-menu-content :is(a,button):hover { background:#eee6f1; }
+.display-menu :is(summary,a,button):focus-visible { outline:2px solid #6b5183; outline-offset:1px; }
+
+/* The active tour uses the header's title slot. Manual browsing has no overlay. */
+body:has(.portfolio-tour) .topbar-page-title { visibility:hidden; }
+#root > .portfolio-tour { top:18px; bottom:auto; max-width:min(30vw,360px); padding:4px 6px 4px 9px; gap:7px; border-radius:7px; font:11px/1.3 system-ui,sans-serif; box-shadow:0 3px 9px #211a2a18; }
+#root > .portfolio-tour .portfolio-tour-title { min-width:0; }
+#root > .portfolio-tour .portfolio-tour-title [role="status"] { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#root > .portfolio-tour button { padding:4px 6px; font-size:11px; }
+@media(max-width:1050px) { #root > .portfolio-tour { display:none; } }
+
+/* A chat uses one flexible history area between two stable control rows. */
+.atelier .atelier-function-main.workspace-agent { height:100%; min-height:0; grid-template-rows:minmax(0,1fr); overflow:hidden; }
+.workspace-agent .atelier-function-surface { min-height:0; height:100%; }
+.workspace-agent .agent-conversation-workspace { grid-template-columns:clamp(148px,14vw,190px) minmax(0,1fr); grid-template-rows:minmax(0,1fr); }
+.workspace-agent .agent-conversation-workspace.with-project-files { grid-template-columns:clamp(148px,14vw,190px) minmax(0,1fr) minmax(200px,235px); }
+.workspace-agent .conversation-panel { display:flex; flex-direction:column; height:100%; min-height:0; min-width:0; overflow:hidden; }
+.workspace-agent .conversation-panel > header, .workspace-agent .conversation-project-line, .workspace-agent .agent-workflow-steps, .workspace-agent .conversation-composer { flex:0 0 auto; }
+.workspace-agent .conversation-panel > header { min-height:47px; gap:8px; }
+.workspace-agent .conversation-identity { flex:1; }
+.workspace-agent .conversation-identity strong { max-width:none; letter-spacing:normal; }
+.workspace-agent .conversation-identity small { text-align:left; }
+.workspace-agent .conversation-project-line { min-height:25px; }
+.workspace-agent .agent-workflow-steps { margin:4px 14px; padding:3px 7px; max-width:calc(100% - 28px); overflow-x:auto; }
+.workspace-agent .conversation-scroll { flex:1 1 0; min-height:0; max-height:none; overflow-y:auto; padding:10px clamp(10px,2vw,26px) 16px; }
+.workspace-agent .conversation-scroll > .message { width:min(100%,50rem); }
+.workspace-agent .conversation-scroll > .message-user { width:fit-content; max-width:min(88%,44rem); margin-right:max(0px,calc((100% - 50rem)/2)); }
+.workspace-agent .conversation-composer { width:min(50rem,calc(100% - 24px)); margin:0 auto 8px; padding:6px 9px; border:1px solid #dcd3e1; background:#faf7fb; box-shadow:none; }
+.workspace-agent .conversation-composer textarea { height:50px; min-height:0; max-height:90px; padding:5px; resize:vertical; }
+.workspace-agent .conversation-composer .portfolio-demo-guide { padding:0 0 3px; gap:6px; font-size:10px; }
+.workspace-agent .conversation-composer .portfolio-demo-guide > span { display:none; }
+.workspace-agent .conversation-composer :is(.attach-button,.composer-toggle) { min-height:29px; }
+.workspace-agent .conversation-composer .send-message { margin-left:auto; }
+.conversation-thread-toggle { display:none; }
+@media(max-width:980px) {
+  .workspace-agent .agent-conversation-workspace.with-project-files { grid-template-columns:clamp(148px,19vw,180px) minmax(0,1fr); }
+  .workspace-agent .agent-project-files { z-index:9; }
+}
+@media(max-width:850px) {
+  .atelier .topbar-leading { top:7px; }
+  .atelier .topbar-right { top:52px; }
+  .atelier .atelier-function-surface { padding-top:97px; }
+}
+@media(max-width:640px) {
+  .workspace-agent .agent-conversation-workspace, .workspace-agent .agent-conversation-workspace.with-project-files { grid-template-columns:minmax(0,1fr); }
+  .workspace-agent .agent-thread-sidebar { display:none; }
+  .workspace-agent .with-thread-drawer .agent-thread-sidebar { display:flex; position:absolute; inset:0 auto 0 0; z-index:12; width:min(225px,74vw); background:#f1ebf5; box-shadow:8px 0 24px #35263d30; }
+  .workspace-agent .conversation-thread-toggle { display:inline-flex; padding:5px; border-radius:6px; align-items:center; }
+  .workspace-agent .with-thread-drawer .conversation-thread-toggle { position:absolute; left:min(232px,76vw); top:10px; z-index:13; background:#f4edf7; }
+  .workspace-agent .conversation-header-actions { margin-left:auto; }
+  .workspace-agent .conversation-project-line { padding-inline:9px; }
+  .workspace-agent .conversation-scroll { padding-inline:8px; }
+}
+
+.workspace-agent .agent-conversation-workspace { grid-template-columns:minmax(0,1fr); }
+.workspace-agent .agent-conversation-workspace.with-thread-drawer { grid-template-columns:minmax(142px,170px) minmax(0,1fr); }
+.workspace-agent .agent-conversation-workspace.with-project-files { grid-template-columns:minmax(0,1fr) minmax(180px,220px); }
+.workspace-agent .agent-conversation-workspace.with-thread-drawer.with-project-files { grid-template-columns:minmax(142px,170px) minmax(0,1fr) minmax(180px,220px); }
+.workspace-agent .conversation-thread-toggle { display:inline-flex; align-items:center; justify-content:center; flex:0 0 31px; height:31px; padding:0; border:1px solid #dcd0e2; border-radius:6px; background:#f7f1f8; color:#4a3957; }
+.workspace-agent .conversation-composer textarea { height:39px; max-height:82px; font-size:14px; line-height:1.4; resize:vertical; }
+.workspace-agent .conversation-composer { padding:5px 8px; margin-bottom:6px; }
+.atelier .conversation-scroll .message-content { font-size:clamp(14px,1.14vw,16px); line-height:1.58; }
+.atelier .conversation-scroll .message-rich-text :is(h1,h2,h3) { font-size:17px; line-height:1.35; margin:1em 0 .4em; }
+.atelier .conversation-scroll .message-rich-text :is(p,ul,ol) { margin:.4em 0 .65em; }
+.atelier .conversation-scroll .message-rich-text li { padding-left:.12em; }
+.atelier .document-dialog-editor, .atelier .document-dialog-preview { line-height:1.65; }
+.atelier .material-card-copy h3 { line-height:1.35; }
+.workspace-agent .conversation-panel > header { padding-inline:9px; }
+@media(max-width:980px) {
+  .workspace-agent .agent-conversation-workspace.with-project-files { grid-template-columns:minmax(0,1fr); }
+  .workspace-agent .agent-conversation-workspace.with-thread-drawer.with-project-files { grid-template-columns:minmax(142px,165px) minmax(0,1fr); }
+}
+@media(max-width:640px) {
+  .workspace-agent .agent-conversation-workspace.with-thread-drawer, .workspace-agent .agent-conversation-workspace.with-thread-drawer.with-project-files {
+    grid-template-columns:minmax(0,1fr);
+  }
+}
+

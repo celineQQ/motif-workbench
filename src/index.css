@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 14% 93%;
+    --foreground: 288 12% 18%;
+    --border: 288 10% 82%;
+    --input: 288 10% 82%;
+    --ring: 288 16% 48%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    min-width: 320px;
+    background: #f1f0eb;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100dvh;
+    margin: 0;
+    background: #f1f0eb;
+    color: #302833;
+    font-family: "Avenir Next", "Century Gothic", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: #d9cfe3;
+    color: #302833;
+  }
+}

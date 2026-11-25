@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Tests and private working material
+.workflow-check.jpg
+playwright-report
+test-results
+/public/assets/library/
+/asset-contact.jpg
+/DEVELOPMENT_PLAN.md
+/info.md
+/参考-其他AI方案.txt
+/新版设计方案.txt
+/素材库文件夹视觉预览.txt
+/首页布局预览.txt
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
