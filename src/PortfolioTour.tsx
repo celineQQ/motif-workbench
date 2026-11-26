@@ -121,7 +121,18 @@ export function PortfolioTour() {
       await type('#motif-settings-drawer input[type=password]', 'demo-only')
       await click('Close', '#motif-settings-drawer button')
       setCaption(t("03 / 当造物有了感情，人类该如何回应？"))
-      await click(t("打开《从弗兰肯斯坦到幻视》"))
+      const importProject = await find('button', t("打开《从弗兰肯斯坦到幻视》")) as HTMLButtonElement
+      await point(importProject)
+      importProject.click()
+      await wait(100)
+      if (importProject.disabled) setCaption('03 / Loading project materials…')
+      while (importProject.isConnected && importProject.disabled) await wait(200)
+      // Opening the imported project activates a fresh conversation and clears its composer.
+      const projectSelect = await find('.agent-project-select select') as HTMLSelectElement
+      if (projectSelect.selectedOptions[0]?.textContent !== 'From Frankenstein to Vision') {
+        throw new Error('Project conversation did not open')
+      }
+      setCaption(t("03 / 当造物有了感情，人类该如何回应？"))
       await click(t("填入研究问题"))
       await click(t("发送消息"))
       await find('button', t("确认预案，生成文稿"))
